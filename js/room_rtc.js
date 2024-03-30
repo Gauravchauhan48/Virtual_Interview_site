@@ -58,7 +58,10 @@ let joinStream = async () => {
     document.getElementById('join-btn').style.display = 'none'
     document.getElementsByClassName('stream__actions')[0].style.display = 'flex'
 
-    localTracks = await AgoraRTC.createMicrophoneAndCameraTracks({})
+    localTracks = await AgoraRTC.createMicrophoneAndCameraTracks({}, {encoderConfig:{
+        width:{min:640, ideal:1920, max:1920},
+        height:{min:480, ideal:1080, max:1080}
+    }})
 
 
     let player = `<div class="video__container" id="user-container-${uid}">
